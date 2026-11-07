@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ahmad - Digital Business Card</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- QRCode.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            accent: '#38bdf8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.4 },
+                            '50%': { opacity: 0.8 },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f3f4f6;
+        }
+
+        /* Custom Glassmorphism Effect */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-button:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Toast Fade Animation */
+        #toast {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        #toast.hidden-toast {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        #toast.show-toast {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, rgba(56,189,248,0.3) 0%, rgba(255,255,255,0.05) 100%);
+            padding: 1px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-x-hidden">
+
+    <!-- Ambient Glowing Background Elements -->
+    <div class="fixed -top-40 -left-40 w-96 h-96 bg-sky-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+    <div class="fixed -bottom-40 -right-40 w-96 h-96 bg-blue-700/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow" style="animation-delay: 2s;"></div>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-md z-10">
+
+        <!-- Business Card Wrapper -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden transition-all duration-500">
+            
+            <!-- Top Action Buttons (QR Code & Share) -->
+            <div class="flex justify-between items-center mb-6">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+                    Available for Consultations
+                </span>
+                <div class="flex items-center gap-2">
+                    <button onclick="openQRModal()" title="Show QR Code" class="glass-button w-9 h-9 rounded-full flex items-center justify-center text-gray-300 hover:text-white">
+                        <i class="fa-solid fa-qrcode text-sm"></i>
+                    </button>
+                    <button onclick="shareCard()" title="Share Business Card" class="glass-button w-9 h-9 rounded-full flex items-center justify-center text-gray-300 hover:text-white">
+                        <i class="fa-solid fa-share-nodes text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile Header -->
+            <div class="text-center mb-8">
+                <!-- Avatar Icon / Monogram -->
+                <div class="relative w-24 h-24 mx-auto mb-4">
+                    <div class="w-full h-full rounded-2xl bg-gradient-to-tr from-sky-600 to-blue-400 p-0.5 shadow-lg shadow-sky-500/20">
+                        <div class="w-full h-full bg-gray-900 rounded-[14px] flex items-center justify-center">
+                            <span class="text-3xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-200">MA</span>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-1 -right-1 bg-sky-500 text-gray-950 p-1.5 rounded-lg text-xs" title="Verified Specialist">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                </div>
+
+                <!-- Name & Role -->
+                <h1 class="text-2xl sm:text-3xl font-bold gradient-text tracking-tight mb-1">
+                    Muhammad Ahmad
+                </h1>
+                <p class="text-sky-400 font-medium text-sm sm:text-base mb-2">
+                    Telecommunications & Tech Sales Specialist
+                </p>
+                
+                <!-- Location Tag -->
+                <div class="inline-flex items-center gap-1.5 text-xs text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700/40">
+                    <i class="fa-solid fa-location-dot text-sky-400"></i>
+                    <span>Ontario, Canada</span>
+                </div>
+            </div>
+
+            <!-- Quick Action Grid -->
+            <div class="grid grid-cols-4 gap-2 mb-8">
+                <!-- Call -->
+                <a href="tel:6479335375" class="glass-button rounded-2xl p-3 flex flex-col items-center justify-center text-center group">
+                    <div class="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-1.5 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-phone text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-300">Call</span>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="glass-button rounded-2xl p-3 flex flex-col items-center justify-center text-center group">
+                    <div class="w-10 h-10 rounded-full bg-green-500/10 text-green-400 flex items-center justify-center mb-1.5 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-300">WhatsApp</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:contact@muhammadahmad.com?subject=Telecommunications%20Inquiry" class="glass-button rounded-2xl p-3 flex flex-col items-center justify-center text-center group">
+                    <div class="w-10 h-10 rounded-full bg-sky-500/10 text-sky-400 flex items-center justify-center mb-1.5 group-hover:scale-110 transition-transform">
+                        <i class="fa-regular fa-envelope text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-300">Email</span>
+                </a>
+
+                <!-- Save Contact -->
+                <button onclick="downloadVCard()" class="glass-button rounded-2xl p-3 flex flex-col items-center justify-center text-center group">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center mb-1.5 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-plus text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-300">Save</span>
+                </button>
+            </div>
+
+            <!-- Key Offerings Section -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-400">Services & Solutions</h2>
+                    <span class="h-px bg-gray-800 flex-1 ml-3"></span>
+                </div>
+
+                <!-- Offering 1: 5G BYOD Mobile Plans -->
+                <div class="gradient-border group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
+                    <div class="bg-gray-900/90 rounded-[15px] p-3.5 flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0 group-hover:bg-sky-500 group-hover:text-gray-950 transition-colors">
+                            <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-sm font-semibold text-gray-100 group-hover:text-sky-400 transition-colors">5G BYOD Mobile Plans</h3>
+                            <p class="text-xs text-gray-400 truncate">High-speed data & flexible multi-line packages</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-600 group-hover:text-sky-400 transition-colors"></i>
+                    </div>
+                </div>
+
+                <!-- Offering 2: Pure Fibre Home Internet -->
+                <div class="gradient-border group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
+                    <div class="bg-gray-900/90 rounded-[15px] p-3.5 flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 group-hover:bg-blue-500 group-hover:text-gray-950 transition-colors">
+                            <i class="fa-solid fa-wifi text-lg"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-sm font-semibold text-gray-100 group-hover:text-blue-400 transition-colors">Pure Fibre Home Internet</h3>
+                            <p class="text-xs text-gray-400 truncate">Ultra-fast symmetrical Gigabit speeds</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                    </div>
+                </div>
+
+                <!-- Offering 3: Home Security Alarm Systems -->
+                <div class="gradient-border group cursor-pointer transition-all duration-300 hover:scale-[1.02]">
+                    <div class="bg-gray-900/90 rounded-[15px] p-3.5 flex items-center gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0 group-hover:bg-teal-500 group-hover:text-gray-950 transition-colors">
+                            <i class="fa-solid fa-shield-cat text-lg"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-sm font-semibold text-gray-100 group-hover:text-teal-400 transition-colors">Home Security Alarm Systems</h3>
+                            <p class="text-xs text-gray-400 truncate">24/7 Smart home monitoring & protection</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-600 group-hover:text-teal-400 transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Contact Information Details -->
+            <div class="mt-8 pt-6 border-t border-gray-800/80 space-y-3">
+                <div class="flex items-center justify-between text-xs text-gray-400">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone-volume text-sky-400"></i>
+                        Direct / WhatsApp
+                    </span>
+                    <a href="tel:6479335375" class="text-gray-200 font-mono hover:text-sky-400 transition-colors">647-933-5375</a>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-400">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-sky-400"></i>
+                        Coverage Area
+                    </span>
+                    <span class="text-gray-200">Ontario, CA</span>
+                </div>
+            </div>
+
+            <!-- Primary Action Button: Save Contact -->
+            <div class="mt-8">
+                <button onclick="downloadVCard()" class="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-gray-950 font-semibold text-sm shadow-lg shadow-sky-500/25 flex items-center justify-center gap-2 transition-all active:scale-95">
+                    <i class="fa-solid fa-address-card text-base"></i>
+                    Save Contact Card (.vcf)
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-6 text-center text-[11px] text-gray-500">
+                &copy; <span id="year"></span> Muhammad Ahmad. All rights reserved.
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for QR Code -->
+    <div id="qrModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card rounded-3xl p-6 w-full max-w-sm text-center transform scale-95 transition-transform duration-300" id="qrModalCard">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-100">Scan to View Card</h3>
+                <button onclick="closeQRModal()" class="text-gray-400 hover:text-white text-lg w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-800">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="bg-white p-4 rounded-2xl inline-block shadow-inner my-2">
+                <div id="qrcode"></div>
+            </div>
+            
+            <p class="text-xs text-gray-400 mt-4">
+                Point your mobile camera at this QR code to instantly open this digital card.
+            </p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="hidden-toast fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900 border border-sky-500/30 text-gray-100 px-4 py-2.5 rounded-full shadow-2xl text-xs font-medium flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-sky-400 text-sm"></i>
+        <span id="toastMessage">Action completed successfully!</span>
+    </div>
+
+    <!-- Interactive Logic JavaScript -->
+    <script>
+        // Set dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 1. Generate Contact File (.vcf Download)
+        function downloadVCard() {
+            const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Muhammad Ahmad
+N:Ahmad;Muhammad;;;
+TITLE:Telecommunications & Technology Sales Specialist
+TEL;TYPE=CELL,VOICE,PREFERRED:647-933-5375
+TEL;TYPE=WHATSAPP:647-933-5375
+ADR;TYPE=WORK:;;Ontario;Canada;;;
+NOTE:Services: 5G BYOD Mobile Plans, Pure Fibre Home Internet, Home Security Alarm Systems.
+END:VCARD`;
+
+            const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.setAttribute('download', 'Muhammad_Ahmad.vcf');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+
+            showToast('Contact file generated & saved!');
+        }
+
+        // 2. Native Share API & Clipboard Fallback
+        function shareCard() {
+            const shareData = {
+                title: 'Muhammad Ahmad - Digital Business Card',
+                text: 'Connect with Muhammad Ahmad, Telecommunications & Technology Sales Specialist in Ontario.',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => showToast('Card shared successfully!'))
+                    .catch((err) => console.log('Share canceled or failed', err));
+            } else {
+                // Clipboard Fallback using execCommand for sandbox safety
+                const textInput = document.createElement('input');
+                textInput.value = window.location.href;
+                document.body.appendChild(textInput);
+                textInput.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('Link copied to clipboard!');
+                } catch (err) {
+                    showToast('Failed to copy link');
+                }
+                document.body.removeChild(textInput);
+            }
+        }
+
+        // 3. QR Code Modal Logic
+        let qrGenerated = false;
+
+        function openQRModal() {
+            const modal = document.getElementById('qrModal');
+            const card = document.getElementById('qrModalCard');
+
+            if (!qrGenerated) {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: window.location.href,
+                    width: 180,
+                    height: 180,
+                    colorDark : "#090d16",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                qrGenerated = true;
+            }
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            card.classList.add('scale-100');
+        }
+
+        function closeQRModal() {
+            const modal = document.getElementById('qrModal');
+            const card = document.getElementById('qrModalCard');
+            
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+        }
+
+        // Close modal on background tap
+        document.getElementById('qrModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQRModal();
+            }
+        });
+
+        // 4. Toast Notification Manager
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            
+            toastMsg.textContent = message;
+            toast.classList.remove('hidden-toast');
+            toast.classList.add('show-toast');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show-toast');
+                toast.classList.add('hidden-toast');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
