@@ -11,32 +11,30 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: #090d16;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.16) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
     }
     .plan-drawer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out, opacity 0.25s ease;
-      opacity: 0;
+      display: none;
     }
     .plan-drawer.open {
-      max-height: 1200px;
-      opacity: 1;
+      display: block;
     }
     .chevron-icon {
-      transition: transform 0.3s ease;
+      transition: transform 0.25s ease;
     }
     .service-card.active .chevron-icon {
       transform: rotate(180deg);
     }
   </style>
 </head>
-<body class="text-slate-100 min-h-screen flex items-center justify-center p-4 relative overflow-x-hidden">
+<body class="text-slate-100 min-h-screen flex items-center justify-center p-4">
 
-  <!-- Ambient Background Glow -->
-  <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-  <main class="w-full max-w-md bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl overflow-hidden relative z-10">
+  <main class="w-full max-w-md bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
     
     <!-- Top Status Bar -->
     <div class="flex items-center justify-between px-6 pt-5 pb-2">
@@ -73,29 +71,29 @@
 
     <!-- Quick Contact Buttons -->
     <div class="grid grid-cols-3 gap-3 px-6 pb-6">
-      <a href="tel:+16479335375" class="flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition group">
-        <div class="w-9 h-9 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition">
+      <a href="tel:+16479335375" class="flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition">
+        <div class="w-9 h-9 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center">
           <i class="fa-solid fa-phone text-sm"></i>
         </div>
         <span class="text-xs font-medium text-slate-200">Call</span>
       </a>
 
-      <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition group">
-        <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition">
+      <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 transition">
+        <div class="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
           <i class="fa-brands fa-whatsapp text-base"></i>
         </div>
         <span class="text-xs font-medium text-emerald-300">WhatsApp</span>
       </a>
 
-      <a href="mailto:muhammad.sales120@gmail.com?subject=Telecommunications%20Inquiry" class="flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition group">
-        <div class="w-9 h-9 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:scale-110 transition">
+      <a href="mailto:muhammad.sales120@gmail.com?subject=Telecommunications%20Inquiry" class="flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition">
+        <div class="w-9 h-9 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center">
           <i class="fa-solid fa-envelope text-sm"></i>
         </div>
         <span class="text-xs font-medium text-slate-200">Email</span>
       </a>
     </div>
 
-    <!-- Services & Solutions (Interactive Plans Accordion) -->
+    <!-- Services & Solutions -->
     <div class="px-6 pb-6">
       <div class="flex items-center justify-between mb-3">
         <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Services &amp; Solutions</h2>
@@ -105,7 +103,7 @@
       <div class="space-y-3">
 
         <!-- SERVICE 1: 5G BYOD Mobile Plans -->
-        <div class="service-card bg-slate-800/60 border border-slate-700/80 rounded-2xl overflow-hidden transition">
+        <div class="service-card bg-slate-800/60 border border-slate-700/80 rounded-2xl overflow-hidden">
           <button onclick="toggleService(this)" class="w-full flex items-center gap-3.5 p-4 text-left hover:bg-slate-800/90 transition">
             <div class="w-11 h-11 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center shrink-0">
               <i class="fa-solid fa-mobile-screen-button text-lg"></i>
@@ -117,76 +115,67 @@
             <i class="fa-solid fa-chevron-down text-xs text-slate-400 chevron-icon"></i>
           </button>
 
-          <!-- Plans Drawer 1 -->
-          <div class="plan-drawer bg-slate-950/60 border-t border-slate-800/80 px-4">
-            <div class="py-3.5 space-y-2.5">
-              
-              <!-- Plan 1: 65GB Canada Wide -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="text-xs font-bold text-white">65 GB 5G Data</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">Canada-Wide</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Unlimited Canada-Wide Talk &amp; Text • BYOD</p>
+          <div class="plan-drawer bg-slate-950/70 border-t border-slate-800/80 p-3.5 space-y-2.5">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-xs font-bold text-white">65 GB 5G Data</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">Canada-Wide</span>
                 </div>
-                <div class="text-right shrink-0">
-                  <div class="text-base font-bold text-emerald-400">$35<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$35/mo%2065GB%20Canada-Wide%205G%20BYOD%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
-                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Unlimited Canada-Wide Talk &amp; Text • BYOD</p>
               </div>
-
-              <!-- Plan 2: 100GB CAN-USA -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="text-xs font-bold text-white">100 GB 5G+ Data</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">CAN-USA</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Canada &amp; USA Roaming • Talk, Text &amp; Data</p>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="text-base font-bold text-emerald-400">$40<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$40/mo%20100GB%20CAN-USA%205G%20BYOD%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
-                </div>
+              <div class="text-right shrink-0">
+                <div class="text-base font-bold text-emerald-400">$35<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$35/mo%2065GB%20Canada-Wide%205G%20BYOD%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
               </div>
+            </div>
 
-              <!-- Plan 3: Unlimited CAN-US-MEX-Caribbean + 27 Countries -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="text-xs font-bold text-white">Unlimited Data</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">CAN-US-MEX-Carib</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Roaming in CAN, US, MEX &amp; Caribbean + 27-Country Calling</p>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-xs font-bold text-white">100 GB 5G+ Data</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">CAN-USA</span>
                 </div>
-                <div class="text-right shrink-0">
-                  <div class="text-base font-bold text-emerald-400">$55<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$55/mo%20Unlimited%20Data%20CAN-US-MEX-Caribbean%20%2B%2027-Country%20Calling%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
-                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Canada &amp; USA Roaming • Talk, Text &amp; Data</p>
               </div>
-
-              <!-- Plan 4: Unlimited Data 68 Countries -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="text-xs font-bold text-white">Unlimited Data</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">68 Countries</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Global Roaming &amp; Calling across 68 Countries</p>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="text-base font-bold text-emerald-400">$70<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$70/mo%20Unlimited%20Data%2068-Country%20Roaming%20%26%20Calling%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
-                </div>
+              <div class="text-right shrink-0">
+                <div class="text-base font-bold text-emerald-400">$40<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$40/mo%20100GB%20CAN-USA%205G%20BYOD%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
               </div>
+            </div>
 
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-xs font-bold text-white">Unlimited Data</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">CAN-US-MEX-Carib</span>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Roaming in CAN, US, MEX &amp; Caribbean + 27-Country Calling</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-base font-bold text-emerald-400">$55<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$55/mo%20Unlimited%20Data%20CAN-US-MEX-Caribbean%20%2B%2027-Country%20Calling%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-xs font-bold text-white">Unlimited Data</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">68 Countries</span>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Global Roaming &amp; Calling across 68 Countries</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-base font-bold text-emerald-400">$70<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$70/mo%20Unlimited%20Data%2068-Country%20Roaming%20%26%20Calling%20Plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Select &rarr;</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- SERVICE 2: Pure Fibre Home Internet -->
-        <div class="service-card bg-slate-800/60 border border-slate-700/80 rounded-2xl overflow-hidden transition">
+        <div class="service-card bg-slate-800/60 border border-slate-700/80 rounded-2xl overflow-hidden">
           <button onclick="toggleService(this)" class="w-full flex items-center gap-3.5 p-4 text-left hover:bg-slate-800/90 transition">
             <div class="w-11 h-11 rounded-xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center shrink-0">
               <i class="fa-solid fa-wifi text-lg"></i>
@@ -198,61 +187,53 @@
             <i class="fa-solid fa-chevron-down text-xs text-slate-400 chevron-icon"></i>
           </button>
 
-          <!-- Plans Drawer 2 -->
-          <div class="plan-drawer bg-slate-950/60 border-t border-slate-800/80 px-4">
-            <div class="py-3.5 space-y-2.5">
-              
-              <!-- Plan 1: 500 Mbps -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold text-white">Fibre 500 Mbps</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">Best Value</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Unlimited Usage • High-Speed Wi-Fi Modem Included</p>
+          <div class="plan-drawer bg-slate-950/70 border-t border-slate-800/80 p-3.5 space-y-2.5">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-white">Fibre 500 Mbps</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">Best Value</span>
                 </div>
-                <div class="text-right shrink-0">
-                  <div class="text-base font-bold text-emerald-400">$45<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$45/mo%20Fibre%20500%20Mbps%20Home%20Internet%20plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Check Address &rarr;</a>
-                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Unlimited Usage • High-Speed Wi-Fi Modem Included</p>
               </div>
-
-              <!-- Plan 2: 1.5 Gbps -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold text-white">Fibre 1.5 Gbps</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Most Popular</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Unlimited Data • Ultra-Fast Streaming &amp; Gaming</p>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="text-base font-bold text-emerald-400">$60<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$60/mo%20Fibre%201.5%20Gbps%20Home%20Internet%20plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Check Address &rarr;</a>
-                </div>
+              <div class="text-right shrink-0">
+                <div class="text-base font-bold text-emerald-400">$45<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$45/mo%20Fibre%20500%20Mbps%20Home%20Internet%20plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Check Address &rarr;</a>
               </div>
+            </div>
 
-              <!-- Plan 3: 3 Gbps -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold text-white">Fibre 3 Gbps</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">Max Speed</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Symmetrical Upload/Download • Heavy Multi-Device Homes</p>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-white">Fibre 1.5 Gbps</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Most Popular</span>
                 </div>
-                <div class="text-right shrink-0">
-                  <div class="text-base font-bold text-emerald-400">$65<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$65/mo%20Fibre%203%20Gbps%20Home%20Internet%20plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Check Address &rarr;</a>
-                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Unlimited Data • Ultra-Fast Streaming &amp; Gaming</p>
               </div>
+              <div class="text-right shrink-0">
+                <div class="text-base font-bold text-emerald-400">$60<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$60/mo%20Fibre%201.5%20Gbps%20Home%20Internet%20plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Check Address &rarr;</a>
+              </div>
+            </div>
 
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-white">Fibre 3 Gbps</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">Max Speed</span>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Symmetrical Upload/Download • Heavy Multi-Device Homes</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-base font-bold text-emerald-400">$65<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$65/mo%20Fibre%203%20Gbps%20Home%20Internet%20plan." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Check Address &rarr;</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- SERVICE 3: Home Security & CCTV Cameras -->
-        <div class="service-card bg-slate-800/60 border border-slate-700/80 rounded-2xl overflow-hidden transition">
+        <div class="service-card bg-slate-800/60 border border-slate-700/80 rounded-2xl overflow-hidden">
           <button onclick="toggleService(this)" class="w-full flex items-center gap-3.5 p-4 text-left hover:bg-slate-800/90 transition">
             <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
               <i class="fa-solid fa-shield-halved text-lg"></i>
@@ -264,42 +245,35 @@
             <i class="fa-solid fa-chevron-down text-xs text-slate-400 chevron-icon"></i>
           </button>
 
-          <!-- Plans Drawer 3 -->
-          <div class="plan-drawer bg-slate-950/60 border-t border-slate-800/80 px-4">
-            <div class="py-3.5 space-y-2.5">
-              
-              <!-- Plan 1: Home Alarm System -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold text-white">Home Alarm System</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">24/7 Monitored</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">Smart Sensors, Keypad &amp; Mobile App Alerts</p>
+          <div class="plan-drawer bg-slate-950/70 border-t border-slate-800/80 p-3.5 space-y-2.5">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-white">Home Alarm System</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">24/7 Monitored</span>
                 </div>
-                <div class="text-right shrink-0">
-                  <div class="text-[10px] text-slate-400">Starting from</div>
-                  <div class="text-base font-bold text-emerald-400">$32<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20Home%20Alarm%20System%20(starting%20from%20$32/mo)." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Get Quote &rarr;</a>
-                </div>
+                <p class="text-[11px] text-slate-400 mt-1">Smart Sensors, Keypad &amp; Mobile App Alerts</p>
               </div>
-
-              <!-- Plan 2: 4-Camera CCTV Package -->
-              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
-                <div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold text-white">4-Camera CCTV System</span>
-                    <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">Installed</span>
-                  </div>
-                  <p class="text-[11px] text-slate-400 mt-1">4 HD Security Cameras + Full Professional Installation</p>
-                </div>
-                <div class="text-right shrink-0">
-                  <div class="text-[10px] text-slate-400">Starting from</div>
-                  <div class="text-base font-bold text-emerald-400">$900</div>
-                  <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%204-Camera%20CCTV%20Package%20with%20Installation%20(starting%20from%20$900)." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Get Quote &rarr;</a>
-                </div>
+              <div class="text-right shrink-0">
+                <div class="text-[10px] text-slate-400">Starting from</div>
+                <div class="text-base font-bold text-emerald-400">$32<span class="text-[11px] font-normal text-slate-400">/mo</span></div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20Home%20Alarm%20System%20(starting%20from%20$32/mo)." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Get Quote &rarr;</a>
               </div>
+            </div>
 
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-white">4-Camera CCTV System</span>
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">Installed</span>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">4 HD Security Cameras + Full Professional Installation</p>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-[10px] text-slate-400">Starting from</div>
+                <div class="text-base font-bold text-emerald-400">$900</div>
+                <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%204-Camera%20CCTV%20Package%20with%20Installation%20(starting%20from%20$900)." target="_blank" class="inline-block mt-1 text-[11px] font-medium text-blue-400 hover:underline">Get Quote &rarr;</a>
+              </div>
             </div>
           </div>
         </div>
@@ -343,29 +317,24 @@
   </div>
 
   <script>
-    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Accordion toggle for Services
     function toggleService(button) {
       const card = button.closest('.service-card');
       const drawer = card.querySelector('.plan-drawer');
       const isOpen = drawer.classList.contains('open');
 
-      // Close all other drawers first
       document.querySelectorAll('.service-card').forEach(otherCard => {
         otherCard.classList.remove('active', 'border-blue-500/50');
         otherCard.querySelector('.plan-drawer').classList.remove('open');
       });
 
-      // Toggle clicked drawer
       if (!isOpen) {
         card.classList.add('active', 'border-blue-500/50');
         drawer.classList.add('open');
       }
     }
 
-    // QR Modal toggle
     function toggleQRModal() {
       const modal = document.getElementById('qrModal');
       modal.classList.toggle('hidden');
