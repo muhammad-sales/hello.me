@@ -193,3 +193,339 @@
                     <div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-1.5 group-hover:scale-110 transition-transform">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                     </div>
+                    <span class="text-[11px] font-semibold text-gray-800">WhatsApp</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:muhammad.sales120@gmail.com?subject=Telecommunications%20Inquiry" class="glass-button rounded-2xl p-3 flex flex-col items-center justify-center text-center group">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center mb-1.5 group-hover:scale-110 transition-transform">
+                        <i class="fa-regular fa-envelope text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-800">Email</span>
+                </a>
+
+                <!-- Save Contact -->
+                <button onclick="downloadVCard()" class="glass-button rounded-2xl p-3 flex flex-col items-center justify-center text-center group">
+                    <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mb-1.5 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-plus text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-800">Save</span>
+                </button>
+            </div>
+
+            <!-- Key Offerings Section -->
+            <div class="space-y-3.5">
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-500">Services &amp; Solutions</h2>
+                    <span class="text-[11px] font-medium text-sky-600">Tap to view plans</span>
+                </div>
+
+                <!-- Offering 1: 5G BYOD Mobile Plans -->
+                <div class="service-item gradient-border transition-all duration-300">
+                    <div class="bg-white rounded-[15px] overflow-hidden shadow-sm">
+                        <button type="button" onclick="togglePlans(this)" class="w-full p-3.5 flex items-center gap-3.5 text-left group cursor-pointer hover:bg-sky-50/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 group-hover:text-sky-600 transition-colors">5G BYOD Mobile Plans</h3>
+                                <p class="text-xs text-gray-600 truncate">High-speed data &amp; international roaming packages</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-sky-600 service-chevron"></i>
+                        </button>
+
+                        <div class="plans-panel bg-slate-50/90 border-t border-gray-100 p-3 space-y-2">
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">65GB Canada-Wide</div>
+                                    <div class="text-[11px] text-gray-500">Unlimited Talk &amp; Text • BYOD</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-sky-600">$34.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$34.99/mo%2065GB%20Canada-Wide%205G%20BYOD%20Plan." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">100GB CAN-USA</div>
+                                    <div class="text-[11px] text-gray-500">Canada &amp; USA Roaming • BYOD</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-sky-600">$39.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$39.99/mo%20100GB%20CAN-USA%205G%20BYOD%20Plan." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">Unlimited Data (CAN-US-MEX-Carib)</div>
+                                    <div class="text-[11px] text-gray-500">Roaming + 27-Country Calling</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-sky-600">$54.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$54.99/mo%20Unlimited%20CAN-US-MEX-Caribbean%20%2B%2027-Country%20Calling%20Plan." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">Unlimited Data (68 Countries)</div>
+                                    <div class="text-[11px] text-gray-500">68-Country Roaming &amp; Calling</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-sky-600">$69.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20$69.99/mo%20Unlimited%2068-Country%20Roaming%20%26%20Calling%20Plan." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offering 2: Pure Fibre Home Internet -->
+                <div class="service-item gradient-border transition-all duration-300">
+                    <div class="bg-white rounded-[15px] overflow-hidden shadow-sm">
+                        <button type="button" onclick="togglePlans(this)" class="w-full p-3.5 flex items-center gap-3.5 text-left group cursor-pointer hover:bg-blue-50/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-wifi text-lg"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Pure Fibre Home Internet</h3>
+                                <p class="text-xs text-gray-600 truncate">Ultra-fast symmetrical Gigabit speeds</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-blue-600 service-chevron"></i>
+                        </button>
+
+                        <div class="plans-panel bg-slate-50/90 border-t border-gray-100 p-3 space-y-2">
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">500 Mbps Fibre</div>
+                                    <div class="text-[11px] text-gray-500">Unlimited Usage • Pure Fibre</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-blue-600">$44.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$44.99/mo%20500%20Mbps%20Fibre%20Internet%20plan." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">1.5 Gbps Fibre</div>
+                                    <div class="text-[11px] text-gray-500">High-Speed Pure Fibre • Streaming &amp; Work</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-blue-600">$59.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$59.99/mo%201.5%20Gbps%20Fibre%20Internet%20plan." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">3 Gbps Fibre</div>
+                                    <div class="text-[11px] text-gray-500">Ultra-Fast Pure Fibre • Heavy Households</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-blue-600">$64.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'd%20like%20to%20check%20availability%20for%20the%20$64.99/mo%203%20Gbps%20Fibre%20Internet%20plan." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offering 3: Home Security Alarm Systems & CCTV Cameras -->
+                <div class="service-item gradient-border transition-all duration-300">
+                    <div class="bg-white rounded-[15px] overflow-hidden shadow-sm">
+                        <button type="button" onclick="togglePlans(this)" class="w-full p-3.5 flex items-center gap-3.5 text-left group cursor-pointer hover:bg-teal-50/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center shrink-0 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-shield-cat text-lg"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-semibold text-gray-900 group-hover:text-teal-600 transition-colors">Home Security &amp; CCTV Cameras</h3>
+                                <p class="text-xs text-gray-600 truncate">24/7 Smart home monitoring &amp; protection</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-teal-600 service-chevron"></i>
+                        </button>
+
+                        <div class="plans-panel bg-slate-50/90 border-t border-gray-100 p-3 space-y-2">
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">Home Alarm System</div>
+                                    <div class="text-[11px] text-gray-500">Starting from • Smart Security Monitoring</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-teal-600">$31.99<span class="text-[10px] font-normal text-gray-500">/mo</span></div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%20Home%20Alarm%20System%20starting%20from%20$31.99/mo." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-2.5 border border-gray-200/80 flex items-center justify-between gap-2">
+                                <div>
+                                    <div class="text-xs font-bold text-gray-900">4 CCTV Cameras + Installation</div>
+                                    <div class="text-[11px] text-gray-500">Starting from • Full Setup Included</div>
+                                </div>
+                                <div class="text-right shrink-0">
+                                    <div class="text-sm font-bold text-teal-600">$899.99</div>
+                                    <a href="https://wa.me/16479335375?text=Hi%20Muhammad,%20I'm%20interested%20in%20the%204%20CCTV%20Cameras%20with%20Installation%20starting%20from%20$899.99." target="_blank" rel="noopener noreferrer" class="text-[11px] font-semibold text-emerald-600 hover:underline">Inquire &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Contact Information Details -->
+            <div class="mt-8 pt-6 border-t border-gray-200 space-y-3">
+                <div class="flex items-center justify-between text-xs text-gray-600">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone-volume text-sky-600"></i>
+                        Direct / WhatsApp
+                    </span>
+                    <a href="tel:6479335375" class="text-gray-900 font-mono font-semibold hover:text-sky-600 transition-colors">647-933-5375</a>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-600">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-sky-600"></i>
+                        Coverage Area
+                    </span>
+                    <span class="text-gray-900 font-semibold">Ontario, CA</span>
+                </div>
+            </div>
+
+            <!-- Primary Action Button: Save Contact -->
+            <div class="mt-8">
+                <button type="button" onclick="downloadVCard()" class="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 flex items-center justify-center gap-2 transition-all active:scale-95">
+                    <i class="fa-solid fa-address-card text-base"></i>
+                    Save Contact Card (.vcf)
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-6 text-center text-[11px] text-gray-500">
+                &copy; <span id="year"></span> Muhammad Ahmad. All rights reserved.
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for QR Code -->
+    <div id="qrModal" onclick="closeQRModal()" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="qrModalCard" onclick="event.stopPropagation()" class="glass-card rounded-3xl p-6 w-full max-w-sm text-center transform scale-95 transition-transform duration-300 bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-900">Scan to View Card</h3>
+                <button type="button" onclick="closeQRModal()" class="text-gray-500 hover:text-gray-900 text-lg w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p class="text-xs text-gray-600 mb-4">Share Muhammad's Digital Business Card</p>
+            <div id="qrcode" class="flex items-center justify-center bg-white p-3 rounded-2xl border border-gray-200 mx-auto w-fit mb-4"></div>
+            <button type="button" onclick="closeQRModal()" class="w-full py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg hidden-toast">
+        Link copied to clipboard!
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function togglePlans(button) {
+            const item = button.closest('.service-item');
+            const panel = item.querySelector('.plans-panel');
+            const isOpen = panel.classList.contains('open');
+
+            document.querySelectorAll('.service-item').forEach(other => {
+                other.classList.remove('open');
+                other.querySelector('.plans-panel').classList.remove('open');
+            });
+
+            if (!isOpen) {
+                item.classList.add('open');
+                panel.classList.add('open');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('hidden-toast');
+            toast.classList.add('show-toast');
+            setTimeout(() => {
+                toast.classList.remove('show-toast');
+                toast.classList.add('hidden-toast');
+            }, 2500);
+        }
+
+        let qrGenerated = false;
+        function openQRModal() {
+            const modal = document.getElementById('qrModal');
+            const card = document.getElementById('qrModalCard');
+            if (!qrGenerated) {
+                new QRCode(document.getElementById('qrcode'), {
+                    text: window.location.href,
+                    width: 160,
+                    height: 160,
+                    colorDark: '#0f172a',
+                    colorLight: '#ffffff'
+                });
+                qrGenerated = true;
+            }
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            card.classList.add('scale-100');
+        }
+
+        function closeQRModal() {
+            const modal = document.getElementById('qrModal');
+            const card = document.getElementById('qrModalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+        }
+
+        function shareCard() {
+            const shareData = {
+                title: 'Muhammad Ahmad - Digital Business Card',
+                text: 'Telecommunications & Tech Sales Specialist — Ontario, Canada',
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Card link copied to clipboard!');
+                });
+            }
+        }
+
+        function downloadVCard() {
+            const vcard = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                'N:Ahmad;Muhammad;;;',
+                'FN:Muhammad Ahmad',
+                'TITLE:Telecommunications & Tech Sales Specialist',
+                'TEL;TYPE=CELL,VOICE:+16479335375',
+                'EMAIL;TYPE=PREF,INTERNET:muhammad.sales120@gmail.com',
+                'ADR;TYPE=WORK:;;Ontario;;Canada',
+                'URL:https://muhammad-sales.github.io/hello.me/',
+                'END:VCARD'
+            ].join('\n');
+
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Muhammad_Ahmad.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Contact card (.vcf) downloaded!');
+        }
+    </script>
+</body>
+</html>
